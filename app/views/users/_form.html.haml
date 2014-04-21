@@ -1,0 +1,22 @@
+- if @user.errors.any?
+  %ul#errors
+    - @user.errors.full_messages.each do |message|
+      %li= "#{message}."
+
+= form_for @user, url: users_path, remote: true do |f|
+  .form-group
+    = f.label :email
+    = f.email_field :email
+
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name
+
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name
+
+  <input type="checkbox" id="age-confirm" name="age-confirm" value="age-confirm" class="pull-left" style="width:8%; height:34px; position:relative; top:-10px">
+  <label>I am over 13 years of age.</label>
+
+  = f.submit "ENTER NOW", class: "btn.btn-default grayed-out-enter-box", id: "enter-btn", disabled: true
