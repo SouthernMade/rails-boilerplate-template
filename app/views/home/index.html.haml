@@ -1,8 +1,8 @@
-#h2 Home!
+- unless user_signed_in?
+  = link_to 'Connect', new_user_path
 
-= debug @descrip
+%br
 
-/ - if @user.signed_in?
-/ 	%h1 Welcome!
-/ 	%h2= @user.email
-/ 	%h2= @user.facebook_shit
+- if @descrip
+  = image_tag @descrip[:user][:external_avatar_url]
+  %h1= "Hi, #{@descrip[:user][:first_name]}!"
