@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def new
-    respond_to :js
+    @user = User.new
   end
 
   def create
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       end
     end
     session[:identifier] = @user.identifier
-    respond_to :js
+    redirect_to root_path
   end
 
   def facebook_login

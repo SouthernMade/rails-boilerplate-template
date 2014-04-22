@@ -19,6 +19,7 @@ gem 'html2haml'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+gem 'securecompare'
 gem 'simple_form'
 gem 'pry-rails'
 

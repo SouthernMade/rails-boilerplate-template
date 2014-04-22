@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   def self.build_identifier email
     if email.present?
       stripped = email.downcase.strip
-      hash = Digest::MD5.hexdigest("#{Rails.application.secrets.client_identifier}|#{stripped}")
+      hash = Digest::MD5.hexdigest("#{CheckdinConfig['client_identifier']}|#{stripped}")
     else
       hash = SecureRandom.hex(16)
     end

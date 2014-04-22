@@ -6,6 +6,7 @@ App::Application.routes.draw do
   root 'home#index'
 
   resources :users, only: [:new, :create]
-  post "facebook_login", to: "users#facebook_login"
-  get "login_callback", to: "users#login_callback"
+  get "facebook_login", to: "users#facebook_login"
+  get "/users/return_from_checkdin", to: "users#login_callback"
+
 end

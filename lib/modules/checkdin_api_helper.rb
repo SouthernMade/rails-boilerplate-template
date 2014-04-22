@@ -2,9 +2,9 @@ module CheckdinApiHelper
 
   def checkdin_api_client
     Checkdin::Client.new(
-      client_id: Rails.application.secrets.client_identifier,
-      client_secret: Rails.application.secrets.client_secret,
-      api_url: Rails.application.secrets.api_url
+      client_id: CheckdinConfig['client_identifier'],
+      client_secret: CheckdinConfig['client_secret'],
+      api_url: CheckdinConfig['api_url']
     )
   end
 
@@ -14,15 +14,15 @@ module CheckdinApiHelper
       email: user.email,
       first_name: user.first_name,
       last_name: user.last_name,
-      campaign_id: Rails.application.secrets.campaign_id
+      campaign_id: CheckdinConfig['campaign_id']
     )
   end
 
   def checkdin_user_bridge
     Checkdin::UserBridge.new(
-      client_identifier: Rails.application.secrets.client_identifier,
-      bridge_secret: Rails.application.secrets.shared_authentication_secret,
-      checkdin_landing_url: Rails.application.secrets.checkdin_landing_url
+      client_identifier: CheckdinConfig['client_identifier'],
+      bridge_secret: CheckdinConfig['shared_authentication_secret'],
+      checkdin_landing_url: CheckdinConfig['checkdin_landing_url']
     )
   end
 
@@ -32,7 +32,7 @@ module CheckdinApiHelper
       email: "",
       user_identifier: identifier,
       authentication_action: "signup_facebook",
-      campaign_id: Rails.application.secrets.campaign_id
+      campaign_id: CheckdinConfig['campaign_id']
     )
   end
 
@@ -48,8 +48,12 @@ module CheckdinApiHelper
       custom_activity_node_id: custom_activity_node_id,
       user_id: user.checkdin_user_fk,
       email: user.email,
-      campaign_id: Rails.application.secrets.campaign_id
+      campaign_id: CheckdinConfig['campaign_id']
     )
+  end
+
+  def get_user_full_description(user)
+    checkdin_api_client.view_user_full_description(user.checkdin_user_fk)
   end
 
   private

@@ -6,7 +6,7 @@ class CheckdinRequestDigester
     encoded_request = encode_request_for_digest(request_data)
     OpenSSL::HMAC.hexdigest(
       OpenSSL::Digest::SHA256.new,
-      Rails.application.secrets.shared_authentication_secret,
+      CheckdinConfig['shared_authentication_secret'],
       encoded_request
     )
   end
