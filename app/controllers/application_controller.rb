@@ -4,4 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include ApplicationHelper
   include CheckdinApiHelper
+
+  def current_user
+    @current_user || User.find_by_identifier(session[:identifier])
+  end
+  helper_method :current_user
+
+  def user_signed_in?
+    session[:identifier]
+  end
+  helper_method :user_signed_in?
+
 end
