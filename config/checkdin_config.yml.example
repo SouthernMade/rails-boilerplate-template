@@ -1,0 +1,15 @@
+development:
+  client_identifier: _identifier_
+  client_secret: _secret_
+  api_url: _staging_url_
+  shared_authentication_secret: _shared_authentication_secret_
+  checkdin_landing_url: _staging_landing_url_
+  campaign_id: _staging_campaign_id_
+
+production:
+  client_identifier: _client_identifier_
+  client_secret: _client_secret_
+  api_url: https://app.checkd.in/api/v1
+  shared_authentication_secret: _shared_authentication_secret_
+  checkdin_landing_url: _production_landing_url_
+  campaign_id: _production_campaign_id_
